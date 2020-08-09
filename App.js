@@ -19,7 +19,7 @@ const MyStack = () => {
     <Provider store={createStore(reducer, middleware)}>
       <NavigationContainer>
         <Tab.Navigator>
-          <Tab.Screen name='Decks' component={DeckList} />
+          <Tab.Screen name='Deck List' component={DeckList} />
           <Tab.Screen name='Add Deck' component={AddDeck} />
         </Tab.Navigator>
       </NavigationContainer>

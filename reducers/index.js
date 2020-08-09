@@ -11,7 +11,7 @@ function decks(state = {}, action) {
     case RECEIVE_DATA:
       return {
         ...state,
-        ...action.decks,
+        decks: action.decks,
       };
     case ADD_DECK: // TODO
       return {

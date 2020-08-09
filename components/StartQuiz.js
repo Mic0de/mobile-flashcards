@@ -3,12 +3,13 @@ import { View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-export class TakeQuiz extends Component {
+export class StartQuiz extends Component {
 
     render() {
         return (
             <View>
-                <Text> TakeQuiz </Text>
+                <Text> StartQuiz </Text>
+                <Text>⛔Sorry, you cannot take this quiz because there are no cards in this deck.⛔</Text>
             </View>
         )
     }
@@ -22,4 +23,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TakeQuiz)
+export default connect(mapStateToProps, mapDispatchToProps)(StartQuiz)

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -7,7 +7,10 @@ export class Deck extends Component {
   render() {
     return (
       <View>
-        <Text> Deck </Text>
+        <Text style={{fontSize: 28}}> Deck Name </Text>
+        <Text style={{fontSize: 18, color: 'grey'}}># cards</Text>
+        <Button>Add Card</Button>
+        <Button>Start Quiz</Button>
       </View>
     );
   }

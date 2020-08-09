@@ -11,7 +11,7 @@ class AddDeck extends Component {
     handleAddNewDeck = () => {
         console.log('handleAddNewDeck()!');
         const { navigation } = this.props;
-        navigation.navigate( "Decks");
+        navigation.navigate( "Deck List");
     }
 
 
