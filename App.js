@@ -10,23 +10,33 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducer from "./reducers";
 import middleware from "./middleware";
+import { Deck } from "./components/Deck";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const MyStack = () => {
+const StackNav = () => {
   return (
-    <Provider store={createStore(reducer, middleware)}>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name='Deck List' component={DeckList} />
-          <Tab.Screen name='Add Deck' component={AddDeck} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </Provider>
+      <Stack.Navigator>
+        <Stack.Screen name='Deck' component={Deck} />
+      </Stack.Navigator>
+  );
+};
+
+const TabNav = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name='Deck List' component={DeckList} />
+        <Tab.Screen name='Add Deck' component={AddDeck} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default function App() {
-  return <MyStack />;
+  return (
+  <Provider store={createStore(reducer, middleware)}>
+    <TabNav />
+  </Provider>);
 }

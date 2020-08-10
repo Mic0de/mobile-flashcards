@@ -18,8 +18,6 @@ class DeckList extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {/* <Text>DeckList Screen</Text> */}
-
         {Object.entries(this.props.decks).map(([k, v]) => (
           <TouchableOpacity onPress={this.handleViewDeck}>
             <Text style={{ fontSize: 28, justifyContent: "center", paddingTop: 5, }}>{v.title} </Text>

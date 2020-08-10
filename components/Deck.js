@@ -9,8 +9,8 @@ export class Deck extends Component {
       <View>
         <Text style={{fontSize: 28}}> Deck Name </Text>
         <Text style={{fontSize: 18, color: 'grey'}}># cards</Text>
-        <Button>Add Card</Button>
-        <Button>Start Quiz</Button>
+        <Button title="Add Card" />
+        <Button title="Start Quiz"/>
       </View>
     );
   }
