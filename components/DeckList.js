@@ -11,43 +11,23 @@ class DeckList extends Component {
 
     getAllDecks().then((decks) => dispatch(receiveData(decks)));
   }
+  handleViewDeck = () => {    
+    const { navigation } = this.props;
+    navigation.navigate( "Deck");
+  }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>DeckList Screen</Text>
-        {/* <Text>PROPS: {this.props}</Text> */}
-        {/* <Text>STATE: {this.state.React}</Text> */}
-        <Text>{JSON.stringify(this.props.decks.React.title)}</Text>
-        {/* <TouchableOpacity>
-          <Text style={{ fontSize: 28 }}> Deck Name </Text>
-          <Text style={{ fontSize: 18, color: "grey", alignItems: 'center' }}># cards</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{ fontSize: 28 }}> Deck Name </Text>
-          <Text style={{ fontSize: 18, color: "grey", alignItems: 'center' }}># cards</Text>
-        </TouchableOpacity> */}
-      {/* {
-        Object.entries(this.props.decks).map(([k,v]) => (
-          <TouchableOpacity>
-          <Text style={{ fontSize: 28 }}>{v.title} </Text>
-          <Text style={{ fontSize: 18, color: "grey", alignItems: 'center' }}>{v.questions.length} cards</Text>
-        </TouchableOpacity>
-        ))
-      } */}
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        {/* <Text>DeckList Screen</Text> */}
 
-      {Object.entries(this.props.decks).map(([k,v]) => (
-        v.map(([k2,v2]) => (
-          <TouchableOpacity>
-                <Text style={{ fontSize: 28 }}>{v2.title} </Text>
-                <Text style={{ fontSize: 18, color: "grey", alignItems: 'center' }}># cards</Text>
-              </TouchableOpacity>
-        ))
-                
-      ))}
-        {/* <TouchableOpacity>
-          <Text style={{ fontSize: 28 }}> Deck Name </Text>
-          <Text style={{ fontSize: 18, color: "grey", alignItems: 'center' }}># cards</Text>
-        </TouchableOpacity> */}
+        {Object.entries(this.props.decks).map(([k, v]) => (
+          <TouchableOpacity onPress={this.handleViewDeck}>
+            <Text style={{ fontSize: 28, justifyContent: "center", paddingTop: 5, }}>{v.title} </Text>
+            <Text style={{ fontSize: 18, color: "grey", alignItems: "center"}}>
+              {v.questions.length} cards
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
     );
   }
