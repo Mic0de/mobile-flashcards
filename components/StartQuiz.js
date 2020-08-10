@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-export class StartQuiz extends Component {
+class StartQuiz extends Component {
 
     render() {
         return (

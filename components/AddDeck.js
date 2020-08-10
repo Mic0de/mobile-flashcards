@@ -50,6 +50,6 @@ const mapDispatchToProps = {
     
 }
 
-export default AddDeck;
+// export default AddDeck;
 
-// export default connect(mapStateToProps, mapDispatchToProps)(AddDeck)
+export default connect(mapStateToProps, mapDispatchToProps)(AddDeck)
