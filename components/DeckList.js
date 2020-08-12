@@ -6,23 +6,28 @@ import { receiveData } from "../actions";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 class DeckList extends Component {
+
   componentDidMount() {
     const { dispatch } = this.props;
 
     getAllDecks().then((decks) => dispatch(receiveData(decks)));
   }
-  handleViewDeck = () => {    
+ 
+    handleViewDeck(key) {
+      console.log('key', key)
     const { navigation } = this.props;
-    navigation.navigate( "Deck");
-  }
+    navigation.navigate( "Deck", {deckKey: key});
+    }
+
+  // }
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         {Object.entries(this.props.decks).map(([k, v]) => (
-          <TouchableOpacity onPress={this.handleViewDeck}>
+          <TouchableOpacity key={k} onPress={() => this.handleViewDeck(k)}>
             <Text style={{ fontSize: 28, justifyContent: "center", paddingTop: 5, }}>{v.title} </Text>
             <Text style={{ fontSize: 18, color: "grey", alignItems: "center"}}>
-              {v.questions.length} cards
+              {v.questions ? v.questions.length  : 0} cards
             </Text>
           </TouchableOpacity>
         ))}
@@ -32,8 +37,6 @@ class DeckList extends Component {
 }
 
 function mapStateToProps(state, props) {
-  console.log("state", state);
-  console.log("props", props);
   const { decks } = state;
   return {
     decks,
