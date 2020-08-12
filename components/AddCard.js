@@ -12,28 +12,27 @@ class AddCard extends Component {
       question: '',
       answer: '',
     };
-    this.handleAddNewCard = this.handleAddNewCard.bind(this);
-    this.handleQuestionChange = this.handleQuestionChange.bind(this);
-    this.handleAnswerChange = this.handleAnswerChange.bind(this);
+    // this.handleAddNewCard = this.handleAddNewCard.bind(this);
+    // this.handleQuestionChange = this.handleQuestionChange.bind(this);
+    // this.handleAnswerChange = this.handleAnswerChange.bind(this);
   }
 
   handleAddNewCard = () => {
-    console.log("this.state.question", this.state.question);
-    console.log("this.state.answer", this.state.answer);    
-    console.log("handleAddNewCard()!");
 
     const { navigation, dispatch } = this.props;   
 
     // TODO: Dispatch addNewCard!
     dispatch(addCard( this.state.question, this.state.answer, this.props.deck))
+     
+    this.setState({question: '', answer: ''})
  
     // navigation.navigate( "Deck List");
   };
 
-  handleQuestionChange(question){
+  handleQuestionChange = (question) => {
       this.setState({question})
   }
-  handleAnswerChange(answer){
+  handleAnswerChange = (answer) => {
       this.setState({answer})
   }
 

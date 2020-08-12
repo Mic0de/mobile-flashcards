@@ -21,13 +21,13 @@ function decks(state = {}, action) {
     case ADD_CARD: // TODO
       return {
         ...state,
-        decks[action.deck.key]: {
-          ...decks[action.deck.key],
+        [action.deck.title]: {
+         ...action.deck,
           questions: [
-            ...state.decks[action.deck.key].questions,
+            ...action.deck.questions,
             {
-              question: action.card.question,
-              answer: action.card.answer,
+              question: action.question,
+              answer: action.answer,
             },
           ],
         },

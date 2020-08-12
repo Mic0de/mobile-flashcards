@@ -20,10 +20,11 @@ export async function getAllDecks() {
   return JSON.parse(data);
 }
 
-// TODO: create function for formatting a new deck? give it a Title that's all.
+//  function for formatting a new deck by just applying a title & using title as the ID
 export function formatNewDeck(givenTitle){
   return {
-    [generateID()] : {
+    // TODO: consider a unique title (generateID()), but I will have to refactor to be able to access this ID in the reducers
+    [givenTitle] : {
       "title": givenTitle,
       "questions": [
 
