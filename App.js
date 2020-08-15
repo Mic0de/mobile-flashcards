@@ -1,6 +1,5 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,6 +12,7 @@ import middleware from "./middleware";
 import  Deck  from "./components/Deck";
 import AddCard from "./components/AddCard";
 import StartQuiz from './components/StartQuiz'
+import { setLocalNotification } from './utils/api'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,12 +40,17 @@ const StackNav = () => {
       </Stack.Navigator>
   );
 };
-export default function App() {
+export default class App extends React.Component {
+  componentDidMount(){
+    setLocalNotification();
+  }
+  render(){
   return (
     <Provider store={createStore(reducer, middleware)}>
       <NavigationContainer>
         <StackNav />
       </NavigationContainer>
     </Provider>
-  );
+  )
+  }
 }

@@ -9,32 +9,27 @@ class AddCard extends Component {
   constructor() {
     super();
     this.state = {
-      question: '',
-      answer: '',
+      question: "",
+      answer: "",
     };
-    // this.handleAddNewCard = this.handleAddNewCard.bind(this);
-    // this.handleQuestionChange = this.handleQuestionChange.bind(this);
-    // this.handleAnswerChange = this.handleAnswerChange.bind(this);
   }
 
   handleAddNewCard = () => {
+    const { navigation, dispatch } = this.props;
 
-    const { navigation, dispatch } = this.props;   
+    dispatch(addCard(this.state.question, this.state.answer, this.props.deck));
 
-    // TODO: Dispatch addNewCard!
-    dispatch(addCard( this.state.question, this.state.answer, this.props.deck))
-     
-    this.setState({question: '', answer: ''})
- 
-    // navigation.navigate( "Deck List");
+    this.setState({ question: "", answer: "" });
+
+    navigation.navigate( "Home"); // TODO: Consider removing this navigation to allow users to add mult. cards easier
   };
 
   handleQuestionChange = (question) => {
-      this.setState({question})
-  }
+    this.setState({ question });
+  };
   handleAnswerChange = (answer) => {
-      this.setState({answer})
-  }
+    this.setState({ answer });
+  };
 
   render() {
     return (
@@ -44,19 +39,18 @@ class AddCard extends Component {
         <TextInput
           style={styles.textInput}
           placeholder='Write a question here'
-            value={this.state.question}
+          value={this.state.question}
           onChangeText={this.handleQuestionChange}
         />
         <TextInput
           style={styles.textInput}
           placeholder='Write an answer here'
-            value={this.state.answer}
+          value={this.state.answer}
           onChangeText={this.handleAnswerChange}
         />
         <Button
           disabled={
-            this.state.question.length < 1 ||
-            this.state.answer.length < 1
+            this.state.question.length < 1 || this.state.answer.length < 1
           }
           title='Add Card'
           onPress={this.handleAddNewCard}
@@ -80,12 +74,11 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, props) {
-    const { deck } = props.route.params;
-  
-    return {
-      deck
-    };
-}
+  const { deck } = props.route.params;
 
+  return {
+    deck,
+  };
+}
 
 export default connect(mapStateToProps)(AddCard);

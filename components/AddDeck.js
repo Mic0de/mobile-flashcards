@@ -34,7 +34,9 @@ class AddDeck extends Component {
 
     dispatch(addDeck(formatNewDeck(this.state.newDeckTitle)));
 
-    navigation.navigate("Deck List");
+    this.setState({newDeckTitle: ""})
+
+    navigation.navigate( "Deck", {deckKey: this.state.newDeckTitle});
   };
 
   render() {
@@ -50,13 +52,11 @@ class AddDeck extends Component {
           value={this.state.newDeckTitle}
           onChangeText={this.handleChangeTitle}
         />
-        {/* <TouchableOpacity onPress={this.handleAddNewDeck}> */}
         <Button
           title='Add Deck'
           onPress={this.handleAddNewDeck}
           disabled={this.state.newDeckTitle.length < 1}
         />
-        {/* </TouchableOpacity> */}
       </View>
     );
   }

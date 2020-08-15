@@ -14,7 +14,7 @@ class DeckList extends Component {
   }
  
     handleViewDeck(key) {
-      console.log('key', key)
+      //TODO: Add an animation for this transition!
     const { navigation } = this.props;
     navigation.navigate( "Deck", {deckKey: key});
     }
