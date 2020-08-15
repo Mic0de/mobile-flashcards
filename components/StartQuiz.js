@@ -12,10 +12,9 @@ class StartQuiz extends Component {
       cardIndex: 0,
       totalCorrect: 0,
       showAnswer: false,
-      usersAnswer: null
+      usersAnswer: null,
     };
   }
- 
 
   // Record answer if correct, increment card index if not at last card, and reset values
   handleAnswerCard = (answer) => {
@@ -57,34 +56,34 @@ class StartQuiz extends Component {
           <View style={{ flex: 1 }}>
             {numberOfCards >= this.state.cardIndex + 1 ? (
               <View style={{ flex: 1 }}>
-                  <Text>
-                    {this.state.cardIndex + 1} / {numberOfCards}
+                <Text>
+                  {this.state.cardIndex + 1} / {numberOfCards}
+                </Text>
+                <Text style={{ fontSize: 50 }}>
+                  {this.props.deck.questions[this.state.cardIndex].question}
+                </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setState(() => ({ showAnswer: true }));
+                  }}
+                >
+                  <Text style={{ color: "blue" }}>View The Answer</Text>
+                </TouchableOpacity>
+                {this.state.showAnswer && (
+                  <Text style={{ fontSize: 30, fontStyle: "italic" }}>
+                    {this.props.deck.questions[this.state.cardIndex].answer}
                   </Text>
-                  <Text style={{ fontSize: 50}}>
-                    {this.props.deck.questions[this.state.cardIndex].question}
-                  </Text>
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.setState(() => ({ showAnswer: true }));
-                    }}
-                  >
-                    <Text style={{ color: "blue" }}>View The Answer</Text>
-                  </TouchableOpacity>
-                  {this.state.showAnswer && (
-                    <Text style={{ fontSize: 30, fontStyle: "italic" }}>
-                      {this.props.deck.questions[this.state.cardIndex].answer}
-                    </Text>
-                  )}
-                  <Button
-                    title='Correct'
-                    color='green'
-                    onPress={() => this.handleAnswerCard("correct")}
-                  />
-                  <Button
-                    title='Incorrect'
-                    color='red'
-                    onPress={() => this.handleAnswerCard("incorrect")}
-                  />
+                )}
+                <Button
+                  title='Correct'
+                  color='green'
+                  onPress={() => this.handleAnswerCard("correct")}
+                />
+                <Button
+                  title='Incorrect'
+                  color='red'
+                  onPress={() => this.handleAnswerCard("incorrect")}
+                />
               </View>
             ) : (
               <View style={{ flex: 1 }}>

@@ -21,7 +21,7 @@ class AddCard extends Component {
 
     this.setState({ question: "", answer: "" });
 
-    navigation.navigate( "Home"); // TODO: Consider removing this navigation to allow users to add mult. cards easier
+    navigation.navigate("Home"); // TODO: Consider removing this navigation to allow users to add mult. cards easier
   };
 
   handleQuestionChange = (question) => {

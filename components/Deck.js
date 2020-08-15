@@ -40,7 +40,7 @@ class Deck extends Component {
   //   //TODO: dispatch deleteDeck, navigate back to deckList/home
   // }
   render() {
-    const {opacity} = this.state;
+    const { opacity } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <Animated.View style={{ opacity, flex: 1 }}>

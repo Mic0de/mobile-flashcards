@@ -13,12 +13,12 @@ function decks(state = {}, action) {
         ...state,
         ...action.decks,
       };
-    case ADD_DECK: // TODO
+    case ADD_DECK:
       return {
         ...state,
         ...action.deck,
       };
-    case ADD_CARD: // TODO
+    case ADD_CARD:
       return {
         ...state,
         [action.deck.title]: {
@@ -32,11 +32,11 @@ function decks(state = {}, action) {
           ],
         },
       };
-    case REMOVE_DECK: // TODO
+    case REMOVE_DECK: // may not be needed
       return {
         ...state,
       };
-    case REMOVE_CARD: // may not be needed
+    case REMOVE_CARD: //  may not be needed
       return {
         ...state,
       };

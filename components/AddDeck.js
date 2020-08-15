@@ -34,9 +34,9 @@ class AddDeck extends Component {
 
     dispatch(addDeck(formatNewDeck(this.state.newDeckTitle)));
 
-    this.setState({newDeckTitle: ""})
+    this.setState({ newDeckTitle: "" });
 
-    navigation.navigate( "Deck", {deckKey: this.state.newDeckTitle});
+    navigation.navigate("Deck", { deckKey: this.state.newDeckTitle });
   };
 
   render() {
