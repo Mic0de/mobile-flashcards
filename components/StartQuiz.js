@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import QuizCard from "./QuizCard";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { clearLocalNotification } from "../utils/api";
 
 class StartQuiz extends Component {
   constructor() {
@@ -42,6 +43,10 @@ class StartQuiz extends Component {
       height: new Animated.Value(0),
     }));
   };
+
+  resetNotification = () => {
+    clearLocalNotification().then(setLocalNotification);
+  }
 
   render() {
     const numberOfCards = this.props.deck.questions.length;
@@ -87,6 +92,7 @@ class StartQuiz extends Component {
               </View>
             ) : (
               <View style={{ flex: 1 }}>
+                {this.resetNotification()}
                 <Text style={{ fontSize: 40, color: "blue" }}>🏆🥇🏁</Text>
                 <Text style={{ fontSize: 40, color: "blue" }}>
                   {((this.state.totalCorrect / numberOfCards) * 100).toFixed(2)}

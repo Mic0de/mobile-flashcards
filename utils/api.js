@@ -37,7 +37,7 @@ export function formatNewDeck(givenTitle) {
   };
 }
 
-export function clearLocalNotification(params) {
+export function clearLocalNotification() {
   AsyncStorage.removeItem(NOTIFICATION_KEY).then(
     Notifications.cancelAllScheduledNotificationsAsync()
   );

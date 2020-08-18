@@ -75,8 +75,5 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({});
 
-// export default AddDeck;
-
-export default connect(mapStateToProps)(AddDeck);
+export default connect(AddDeck);
