@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import QuizCard from "./QuizCard";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { clearLocalNotification } from "../utils/api";
+import { clearLocalNotification, setLocalNotification } from "../utils/api";
 
 class StartQuiz extends Component {
   constructor() {
