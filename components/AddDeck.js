@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(AddDeck);
+export default connect()(AddDeck);

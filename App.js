@@ -9,10 +9,11 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducer from "./reducers";
 import middleware from "./middleware";
-import  Deck  from "./components/Deck";
+import Deck from "./components/Deck";
 import AddCard from "./components/AddCard";
-import StartQuiz from './components/StartQuiz'
-import { setLocalNotification } from './utils/api'
+import StartQuiz from "./components/StartQuiz";
+import { setLocalNotification } from "./utils/api";
+import { Feather } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,37 +21,54 @@ const Tab = createBottomTabNavigator();
 const TabNav = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name='Deck List' component={DeckList} />
-      <Tab.Screen name='Add Deck' component={AddDeck} />
+      <Tab.Screen
+        name='Deck List'
+        component={DeckList}
+        options={{
+          tabBarLabel: "Decks",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name='list' size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Add Deck'
+        component={AddDeck}
+        options={{
+          tabBarLabel: "New Deck",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name='folder-plus' size={size} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
 
 const StackNav = () => {
   return (
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name='Deck' component={Deck} />
-        <Stack.Screen name='AddCard' component={AddCard} />
-        <Stack.Screen name='StartQuiz' component={StartQuiz} />
-        
-        
+    <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen name='Home' component={TabNav} />
+      <Stack.Screen name='Deck' component={Deck} />
+      <Stack.Screen name='AddCard' component={AddCard} />
+      <Stack.Screen name='StartQuiz' component={StartQuiz} />
+
       <Stack.Screen name='Deck List' component={DeckList} />
       <Stack.Screen name='Add Deck' component={AddDeck} />
-      </Stack.Navigator>
+    </Stack.Navigator>
   );
 };
 export default class App extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     setLocalNotification();
   }
-  render(){
-  return (
-    <Provider store={createStore(reducer, middleware)}>
-      <NavigationContainer>
-        <StackNav />
-      </NavigationContainer>
-    </Provider>
-  )
+  render() {
+    return (
+      <Provider store={createStore(reducer, middleware)}>
+        <NavigationContainer>
+          <StackNav />
+        </NavigationContainer>
+      </Provider>
+    );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { SafeAreaView, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
 import { getAllDecks } from "../utils/api";
 import { receiveData } from "../actions";
@@ -17,22 +17,43 @@ class DeckList extends Component {
     navigation.navigate("Deck", { deckKey: key });
   }
 
-  render() {
+  renderItem = ({item}) => {
+    const k = item[0];
+    const v = item[1];
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {Object.entries(this.props.decks).map(([k, v]) => (
-          <TouchableOpacity key={k} onPress={() => this.handleViewDeck(k)}>
+      <TouchableOpacity key={k} onPress={() => this.handleViewDeck(k)}>
             <Text
               style={{ fontSize: 28, justifyContent: "center", paddingTop: 5 }}
             >
-              {v.title}{" "}
+              {v.title}
             </Text>
             <Text style={{ fontSize: 18, color: "grey", alignItems: "center" }}>
               {v.questions ? v.questions.length : 0} cards
             </Text>
           </TouchableOpacity>
-        ))}
-      </View>
+    )
+  }
+
+  render() {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <FlatList
+          data={Object.entries(this.props.decks)}
+          renderItem={this.renderItem}
+        />
+        {/* {Object.entries(this.props.decks).map(([k, v]) => (
+          <TouchableOpacity key={k} onPress={() => this.handleViewDeck(k)}>
+            <Text
+              style={{ fontSize: 28, justifyContent: "center", paddingTop: 5 }}
+            >
+              {v.title}
+            </Text>
+            <Text style={{ fontSize: 18, color: "grey", alignItems: "center" }}>
+              {v.questions ? v.questions.length : 0} cards
+            </Text>
+          </TouchableOpacity>
+        ))} */}
+      </SafeAreaView>
     );
   }
 }
