@@ -38,6 +38,7 @@ class DeckList extends Component {
     return (
       <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <FlatList
+          keyExtractor={(item, index) => `${item[0]}-${index}}`}
           data={Object.entries(this.props.decks)}
           renderItem={this.renderItem}
         />
